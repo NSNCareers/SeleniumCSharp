@@ -56,12 +56,12 @@ pipeline{
 		
 		
 		 stage('Publish Test Report'){
-            steps{
-                echo 'Publishing Automation tests'
-                  nunit testResultsPattern: 'TestResult.xml'
-            }
+           step([$class: 'NUnitPublisher', testResultsPattern: 'TestResult.xml', debug: false, 
+                 keepJUnitReports: true, skipJUnitArchiver:false, failIfNoResults: true])
 
         }
+		
+		
 		
 		}
        
