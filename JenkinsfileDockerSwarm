@@ -54,13 +54,15 @@ pipeline{
         }
 		
 		
-		stage('Publish Test Report'){
-            nunit testResultsPattern: 'TestResult.xml'
-             }
+		
+		 stage('Publish Test Report'){
+            steps{
+                echo 'Publishing Automation tests'
+                  nunit testResultsPattern: 'TestResult.xml'
+            }
 
-      
-        
-       }
+        }
+		
        
        
         
