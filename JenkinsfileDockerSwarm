@@ -48,7 +48,7 @@ pipeline{
         stage('Testing Project'){
             steps{
                 echo 'Running Automation tests'
-                 sh 'dotnet test \TestFramework\TestFramework.csproj'
+                 sh 'dotnet test /TestFramework/TestFramework.csproj'
             }
 
         }
