@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using CoreFramework.BaseClasses;
+﻿using CoreFramework.BaseClasses;
 using OpenQA.Selenium;
 using PageObjectFramework.Interfaces;
 
@@ -9,19 +7,12 @@ namespace PageObjectFramework.Pages
     public class HomePage : BaseClass, IHomePage
     {
         private static string pageName = "HomePage";
-        private static By locator = By.CssSelector("button[data-testid='hero-primary-cta']");
+        private static By locator = By.CssSelector("nav[class*='expand']>div>a[class*='brand']");
 
         public HomePage() : base(pageName, locator)
         {
         }
 
-        public void EnterSearchString(string text)
-        {
-            AcceptCookie();
-            Thread.Sleep(5000);
-            var locator = By.CssSelector("input[data-testid='nav-desktop-property-search-input']");
-            EnterText(locator, text);
-        }
 
         public string GetPageTitel()
         {
@@ -29,21 +20,27 @@ namespace PageObjectFramework.Pages
 
             return titel;
         }
+       
 
-        public void ClickOnElementSearchButton()
+        public T ClickOnRegisterLink<T>() where T:class
         {
-            var locator = By.CssSelector("button[data-testid='nav-desktop-property-search-button']");
+            var locator = By.CssSelector("a[href*='Register']");
             ClickOnElement(locator);
+            return GetPage<T>();
         }
 
-        private void AcceptCookie()
+        public T ClickOnLoginLink<T>() where T : class
         {
-            var locator = By.CssSelector("div[class='as-oil-l-item']>button");
-            var element = driver.FindElement(locator);
-            if (element.Displayed)
-            {
-                ClickOnElement(locator);
-            }
+            var locator = By.CssSelector("a[href*='Login']");
+            ClickOnElement(locator);
+            return GetPage<T>();
+        }
+
+        public bool VerifyElementDisplayed(string selector)
+        {
+            var locator = By.CssSelector(selector);
+            var boolResults = IsElementDisplayed(locator);
+            return boolResults;
         }
     }
 }

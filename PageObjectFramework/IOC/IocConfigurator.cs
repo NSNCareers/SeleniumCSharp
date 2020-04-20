@@ -18,7 +18,7 @@ namespace PageObjectFramework.IOC
         private static void RegisterServices(IUnityContainer container)
         {
             container.RegisterType<IHomePage,HomePage>();
-            container.RegisterType<ISearchPage,SearchPage>();
+            container.RegisterType<IRegisterPage,RegisterPage>();
         }
     }
 }

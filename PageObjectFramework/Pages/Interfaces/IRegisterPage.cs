@@ -1,6 +1,6 @@
 ﻿namespace PageObjectFramework.Interfaces
 {
-    public interface ISearchPage
+    public interface IRegisterPage
     {
         string GetPageTitel();
     }

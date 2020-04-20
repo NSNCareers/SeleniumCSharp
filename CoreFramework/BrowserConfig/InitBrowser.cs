@@ -1,10 +1,4 @@
-﻿using System;
-using System.Configuration;
-using System.Drawing;
-using System.Threading;
-using CoreFramework.Config;
-using CoreFramework.JsonReader;
-using Microsoft.Extensions.Configuration;
+﻿using CoreFramework.Config;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
@@ -12,6 +6,8 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
+using System;
+using System.Drawing;
 
 namespace CoreFramework.BrowserConfig
 {
@@ -27,22 +23,12 @@ namespace CoreFramework.BrowserConfig
 
         internal static IWebDriver InitializeDriver(string browserType)
         {
-<<<<<<< HEAD
+
             string hubIpAddress = JsonConfig.GetJsonValue("HubIpAddress");
-=======
-<<<<<<< HEAD
-            //string hubIpAddress = GetJson.GetJsonString().BaseUrl;
-            string hubIpAddress = "http://www.purplebricks.co.uk";
-            remoteWebDriverWaitTime = ConfigurationManager.AppSettings.Get("remoteWebdriverWait");
-            elementLoadWaitTime = ConfigurationManager.AppSettings.Get("elementWaitTime");
-            pageLoadWaitTime = ConfigurationManager.AppSettings.Get("pageLoad");
-=======
-            string hubIpAddress = "http://159.89.181.18:4444/wd/hub";
->>>>>>> c5783051340e0b9550059f9f2cd6139e13dd563a
-            remoteWebDriverWaitTime = "60";
-            elementLoadWaitTime = "10";
-            pageLoadWaitTime = "10";
->>>>>>> e096591cd0e7a7a14ee8384fb078b3ae42d983b7
+            remoteWebDriverWaitTime = JsonConfig.GetJsonValue("RemoteWebdriverWait");
+            elementLoadWaitTime = JsonConfig.GetJsonValue("ElementWaitTime");
+            pageLoadWaitTime = JsonConfig.GetJsonValue("PageLoad");
+
             IWebDriver _driver = null;
             
             var browser = browserType.ToLower();
@@ -58,32 +44,15 @@ namespace CoreFramework.BrowserConfig
                         option.AddAdditionalCapability("", true);
                         break;
 
-<<<<<<< HEAD
-                    case "chromessss":
-=======
                     case "chrome":
->>>>>>> e096591cd0e7a7a14ee8384fb078b3ae42d983b7
                         chromeOptions = new ChromeOptions();
-                        //chromeOptions.AddArgument("no-sandbox");
-
-                        //ChromeOptions options = new ChromeOptions();
-                        //options.AddArgument("no-sandbox");
-                        //ChromeDriver driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(3));
-                        //driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
-
-
+                        chromeOptions.AddArgument("no-sandbox");
+                        chromeOptions.AddArgument("--window-size=1920,1080");
+                        chromeOptions.AddArgument("--start-maximized");
                         break;
 
                     case "firefox":
                         option = new FirefoxOptions();
-
-                        break;
-
-                    case "noGridChrome":
-                        _driver = new ChromeDriver();
-                        option.AddAdditionalCapability("--window-size=1920,1080", true);
-                        option.AddAdditionalCapability("--start-maximized", true);
-                        option.AddAdditionalCapability("", true);
                         break;
 
                     case "edge":
@@ -92,13 +61,6 @@ namespace CoreFramework.BrowserConfig
                         option.AddAdditionalCapability("--start-maximized", true);
                         option.AddAdditionalCapability("", true);
                         break;
-
-                    default:
-                        _driver = new ChromeDriver();
-                        _driver.Manage().Window.Maximize();
-                        _driver.Manage().Cookies.DeleteAllCookies();
-                        Thread.Sleep(5000);
-                        return _driver;
                 }
 
 

@@ -33,5 +33,11 @@ namespace CoreFramework.BaseClasses
         {
             get { return BrowserSession.driver; }
         }
+
+        public T GetPage<T>()
+        {
+
+            return (T)Activator.CreateInstance(typeof(T), new object[] { });
+        }
     }
 }

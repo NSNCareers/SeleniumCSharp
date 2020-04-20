@@ -5,12 +5,12 @@ using PageObjectFramework.Interfaces;
 
 namespace PageObjectFramework.Pages
 {
-    public class SearchPage : BaseClass, ISearchPage
+    public class RegisterPage : BaseClass, IRegisterPage
     {
-        private static string pageName = "SearchPage";
-        private static By locator = By.CssSelector("#buttonLogin");
+        private static string pageName = "RegisterPage";
+        private static By locator = By.CssSelector("#Input_ConfirmPassword");
 
-        public SearchPage() : base(pageName, locator)
+        public RegisterPage() : base(pageName, locator)
         {
         }
 

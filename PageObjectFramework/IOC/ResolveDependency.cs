@@ -12,7 +12,7 @@ namespace PageObjectFramework.IOC
         {
 
             UnityWrapper.Register<IHomePage, HomePage>();
-            UnityWrapper.Register<ISearchPage, SearchPage>();
+            UnityWrapper.Register<IRegisterPage, RegisterPage>();
         }
     }
 }

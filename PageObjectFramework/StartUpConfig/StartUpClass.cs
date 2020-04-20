@@ -29,7 +29,7 @@ namespace PageObjectFramework.StartUpConfig
         #region Interfacce declarations
 
         public readonly IHomePage homePage;
-        public readonly ISearchPage searchPage;
+        public readonly IRegisterPage searchPage;
 
         #endregion
     }

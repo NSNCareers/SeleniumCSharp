@@ -34,5 +34,19 @@ namespace CoreFramework.BaseClasses
                 return null;
             }
         }
+
+        public bool IsElementDisplayed(By by)
+        {
+            try
+            {
+                var elementLocated = driver.FindElement(by);
+                return elementLocated.Displayed;
+            }
+            catch (Exception)
+            {
+                // Report
+                return false;
+            }
+        }
     }
 }
