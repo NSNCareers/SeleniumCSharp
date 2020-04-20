@@ -25,8 +25,6 @@ namespace TestFramework.Tests
 
         }
 
-
-
         [Test, Category("Navigate to Login Page")]
         public void AssertPageTitel()
         {
