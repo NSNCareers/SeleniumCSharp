@@ -39,7 +39,7 @@ pipeline{
             steps{
                 echo 'Started building Swarm'
                  sh 'docker stack deploy --compose-file grid.yaml seleniumGrid'
-				 sleep(time:90,unit:"SECONDS")
+				 sleep(time:120,unit:"SECONDS")
             }
 
         }
