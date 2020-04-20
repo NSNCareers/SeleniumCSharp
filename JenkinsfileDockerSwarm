@@ -39,6 +39,7 @@ pipeline{
             steps{
                 echo 'Started building Swarm'
                  sh 'docker stack deploy --compose-file grid.yaml seleniumGrid'
+				 sleep(time:5,unit:"SECONDS")
             }
 
         }
@@ -46,11 +47,16 @@ pipeline{
 
         stage('Testing Project'){
             steps{
-                echo 'Running unit tests'
-                 /*sh 'dotnet test ./TestFramework.csproj'*/
+                echo 'Running Automation tests'
+                 sh 'dotnet test ./TestFramework.csproj'
             }
 
         }
+		
+		
+		stage('Publish Test Report'){
+            nunit testResultsPattern: 'TestResult.xml'
+             }
 
       
         
@@ -62,8 +68,8 @@ pipeline{
           post {
         always {
             echo 'One way or another, I have finished'
-			     /*sh 'docker stack rm seleniumGrid'*/
-            deleteDir() /* clean up our workspace */
+			     sh 'docker stack rm seleniumGrid'
+                 deleteDir() /* clean up our workspace */
         }
         success {
             echo 'I succeeeded!'
