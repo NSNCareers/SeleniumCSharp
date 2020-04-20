@@ -48,7 +48,7 @@ pipeline{
         stage('Testing Project'){
             steps{
                 echo 'Running Automation tests'
-                 sh 'dotnet test ./TestFramework.csproj'
+                 sh 'dotnet test TestFramework.csproj'
             }
 
         }
@@ -72,6 +72,7 @@ pipeline{
         always {
             echo 'One way or another, I have finished'
 			     sh 'docker stack rm seleniumGrid'
+				  echo 'Removing Workspace'
                  deleteDir() /* clean up our workspace */
         }
         success {
