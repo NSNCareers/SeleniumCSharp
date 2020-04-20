@@ -45,7 +45,7 @@ services:
         selenium.grid.node: "true"
         selenium.grid.node.type: "chrome"
       restart_policy:
-        condition: always
+        condition: none
       placement:
         constraints: [node.role == worker]
     entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
@@ -69,7 +69,7 @@ services:
         selenium.grid.node: "true"
         selenium.grid.node.type: "firefox"
       restart_policy:
-        condition: always
+        condition: none
       placement:
         constraints: [node.role == worker]
     entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
@@ -93,7 +93,7 @@ services:
         selenium.grid.node: "true"
         selenium.grid.node.type: "opera"
       restart_policy:
-        condition: always
+        condition: none
       placement:
         constraints: [node.role == worker]
     entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
