@@ -23,14 +23,14 @@ pipeline{
         stage('Restore Solution'){
             steps{
                 echo 'Restoring Solution'
-                sh "dotnet restore LoginApp.sln"
+                sh "dotnet restore SeleniumTestFramework.sln"
             }
         }
 
         stage('Build Solution'){
             steps{
                 echo 'Building Solution'
-                 sh 'dotnet build LoginApp.sln'
+                 sh 'dotnet build SeleniumTestFramework.sln'
             }
         }
 		
