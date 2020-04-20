@@ -39,7 +39,7 @@ services:
       - hub
     deploy:
       mode: replicated
-      replicas: 4
+      replicas: 10
       labels:
         selenium.grid.type: "node"
         selenium.grid.node: "true"
@@ -63,7 +63,7 @@ services:
       - hub
     deploy:
       mode: replicated
-      replicas: 4
+      replicas: 3
       labels:
         selenium.grid.type: "node"
         selenium.grid.node: "true"
@@ -87,7 +87,7 @@ services:
       - hub
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       labels:
         selenium.grid.type: "node"
         selenium.grid.node: "true"
