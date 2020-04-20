@@ -1,0 +1,99 @@
+# To start Docker in Swarm mode, you need to run `docker swarm init`
+# To deploy the Grid, `docker stack deploy -c docker-compose.yml grid`
+# Stop with `docker stack rm grid`
+
+version: '3.7'
+
+
+networks:
+  main:
+    driver: overlay
+services:
+  hub:
+    image: selenium/hub:3.141.59-20200409
+    ports:
+      - "4444:4444"
+    networks:
+      - main
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        selenium.grid.type: "hub"
+        selenium.grid.hub: "true"
+      restart_policy:
+        condition: none
+      placement:
+        constraints: [node.role == manager]
+
+  chrome:
+    image: selenium/node-chrome:3.141.59-20200409
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      HUB_HOST: hub
+      HUB_PORT: 4444
+    networks:
+      - main
+    depends_on:
+      - hub
+    deploy:
+      mode: replicated
+      replicas: 4
+      labels:
+        selenium.grid.type: "node"
+        selenium.grid.node: "true"
+        selenium.grid.node.type: "chrome"
+      restart_policy:
+        condition: always
+      placement:
+        constraints: [node.role == worker]
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+
+  firefox:
+    image: selenium/node-firefox:3.141.59-20200409
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      HUB_HOST: hub
+      HUB_PORT: 4444
+    networks:
+      - main
+    depends_on:
+      - hub
+    deploy:
+      mode: replicated
+      replicas: 4
+      labels:
+        selenium.grid.type: "node"
+        selenium.grid.node: "true"
+        selenium.grid.node.type: "firefox"
+      restart_policy:
+        condition: always
+      placement:
+        constraints: [node.role == worker]
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+
+  opera:
+    image: selenium/node-opera:3.141.59-20200409
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      HUB_HOST: hub
+      HUB_PORT: 4444
+    networks:
+      - main
+    depends_on:
+      - hub
+    deploy:
+      mode: replicated
+      replicas: 2
+      labels:
+        selenium.grid.type: "node"
+        selenium.grid.node: "true"
+        selenium.grid.node.type: "opera"
+      restart_policy:
+        condition: always
+      placement:
+        constraints: [node.role == worker]
+    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'

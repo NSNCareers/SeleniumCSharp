@@ -1,0 +1,83 @@
+pipeline{
+
+   agent { label "master" }
+    environment{
+    NAME="Ngwesse Elvis"
+    BuildOutput="./BuildOutput"  
+    }
+    
+   
+    stages{
+    
+
+        
+        stage('Checkout from SCM'){
+            steps{
+                echo 'Checking Out from GitHub'
+                echo "NAME = ${env.NAME}"
+            }
+        }
+        
+          
+
+        stage('Restore Solution'){
+            steps{
+                echo 'Restoring Solution'
+                sh "dotnet restore LoginApp.sln"
+            }
+        }
+
+        stage('Build Solution'){
+            steps{
+                echo 'Building Solution'
+                 sh 'dotnet build LoginApp.sln'
+            }
+        }
+		
+		
+		 stage('Building Swarm'){
+            steps{
+                echo 'Started building Swarm'
+                 sh 'docker stack deploy --compose-file grid.yaml seleniumGrid'
+            }
+
+        }
+		
+
+        stage('Testing Project'){
+            steps{
+                echo 'Running unit tests'
+                 /*sh 'dotnet test ./TestFramework.csproj'*/
+            }
+
+        }
+
+      
+        
+       }
+       
+       
+        
+        
+          post {
+        always {
+            echo 'One way or another, I have finished'
+			     /*sh 'docker stack rm seleniumGrid'*/
+            deleteDir() /* clean up our workspace */
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+        
+    } 
+     
+}
