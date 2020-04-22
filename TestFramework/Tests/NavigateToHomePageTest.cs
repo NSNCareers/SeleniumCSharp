@@ -7,6 +7,7 @@ using PageObjectFramework.StartUpConfig;
 namespace TestFramework.Tests
 {
     [TestFixture()]
+    [Parallelizable]
     public class NavigateToHomePageTest : StartUpClass
     {
         private IHomePage _homePage;

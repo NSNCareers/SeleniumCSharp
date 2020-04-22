@@ -1,10 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using System.Threading;
-using CoreFramework.Config;
-using Microsoft.Extensions.Configuration;
+﻿using CoreFramework.Config;
 using OpenQA.Selenium;
+using System;
+using System.Threading;
 using static CoreFramework.Enumerations.Enums;
 
 namespace CoreFramework.BrowserConfig

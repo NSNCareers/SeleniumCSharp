@@ -6,6 +6,7 @@ using PageObjectFramework.IOC;
 namespace PageObjectFramework.StartUpConfig
 {
     [TestFixture]
+    [Parallelizable]
     public class StartUpClass
     {
         public StartUpClass()

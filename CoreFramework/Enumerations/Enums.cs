@@ -6,7 +6,8 @@ namespace CoreFramework.Enumerations
        public enum Browser
         {
             chrome,
-            firefox
+            firefox,
+            localhost
         }
     }
 }

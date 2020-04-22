@@ -10,11 +10,9 @@ networks:
     driver: overlay
 services:
   hub:
-    image: selenium/hub:3.141.59-20200409
+    image: selenium/hub
     ports:
       - "4444:4444"
-    environment:
-      GRID_MAX_SESSION: 1
     networks:
       - main
     deploy:
@@ -29,21 +27,21 @@ services:
         constraints: [node.role == manager]
 
   chrome:
-    image: selenium/node-chrome:3.141.59-20200409
+    image: selenium/node-chrome
     volumes:
       - /dev/shm:/dev/shm
     environment:
-      NODE_MAX_INSTANCES: 1
-      NODE_MAX_SESSION: 1
       HUB_HOST: hub
       HUB_PORT: 4444
+      NODE_MAX_SESSION: 5
+      NODE_MAX_INSTANCES: 5
     networks:
       - main
     depends_on:
       - hub
     deploy:
       mode: replicated
-      replicas: 10
+      replicas: 5
       labels:
         selenium.grid.type: "node"
         selenium.grid.node: "true"
@@ -55,21 +53,21 @@ services:
     entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   firefox:
-    image: selenium/node-firefox:3.141.59-20200409
+    image: selenium/node-firefox
     volumes:
       - /dev/shm:/dev/shm
     environment:
-      NODE_MAX_INSTANCES: 1
-      NODE_MAX_SESSION: 1
       HUB_HOST: hub
       HUB_PORT: 4444
+      NODE_MAX_SESSION: 5
+      NODE_MAX_INSTANCES: 5
     networks:
       - main
     depends_on:
       - hub
     deploy:
       mode: replicated
-      replicas: 3
+      replicas: 2
       labels:
         selenium.grid.type: "node"
         selenium.grid.node: "true"
@@ -81,14 +79,14 @@ services:
     entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   opera:
-    image: selenium/node-opera:3.141.59-20200409
+    image: selenium/node-opera
     volumes:
       - /dev/shm:/dev/shm
     environment:
-      NODE_MAX_INSTANCES: 1
-      NODE_MAX_SESSION: 1
       HUB_HOST: hub
       HUB_PORT: 4444
+      NODE_MAX_SESSION: 5
+      NODE_MAX_INSTANCES: 5
     networks:
       - main
     depends_on:

@@ -7,6 +7,7 @@ using PageObjectFramework.StartUpConfig;
 namespace TestFramework.Tests
 {
     [TestFixture()]
+    [Parallelizable]
     public class NavigateToHomePageTest30 : StartUpClass
     {
         private IHomePage _homePage;
@@ -25,7 +26,7 @@ namespace TestFramework.Tests
 
         }
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Login Page 30")]
         public void AssertPageTitel()
         {
             var titel = _homePage.GetPageTitel();
@@ -33,7 +34,7 @@ namespace TestFramework.Tests
             Assert.AreEqual(titel,pageTitel);
         }
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Login Page 30")]
         public void AssertRegisterButtonDisplayed()
         {
             var locator = "a[href*='Register']";
@@ -41,7 +42,7 @@ namespace TestFramework.Tests
             Assert.IsTrue(boolResults,$"Register button is not displayed");
         }
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Login Page 30")]
         public void AssertLoginButtonDisplayed()
         {
             var locator = "a[href*='Login']";

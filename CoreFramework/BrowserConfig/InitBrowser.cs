@@ -46,20 +46,27 @@ namespace CoreFramework.BrowserConfig
 
                     case "chrome":
                         chromeOptions = new ChromeOptions();
-                        //chromeOptions.AddArgument("no-sandbox");
-                        //chromeOptions.AddArgument("--window-size=1920,1080");
-                        //chromeOptions.AddArgument("--start-maximized");
+                        chromeOptions.PlatformName = "LINUX";
+                        chromeOptions.AddArgument("no-sandbox");
+                        chromeOptions.AddArgument("--window-size=1920,1080");
+                        chromeOptions.AddArgument("--start-maximized");
                         break;
 
                     case "firefox":
                         option = new FirefoxOptions();
+                        //option.AddAdditionalCapability("--window-size=1920,1080", true);
+                        //option.AddAdditionalCapability("--start-maximized", true);
+                        //option.PlatformName = "LINUX";
                         break;
 
                     case "edge":
                         option = new EdgeOptions();
                         option.AddAdditionalCapability("--window-size=1920,1080", true);
                         option.AddAdditionalCapability("--start-maximized", true);
-                        option.AddAdditionalCapability("", true);
+                        break;
+
+                    case "localhost":
+                        _driver = new FirefoxDriver();
                         break;
                 }
 
@@ -70,7 +77,7 @@ namespace CoreFramework.BrowserConfig
                     _driver.Manage().Window.Size = new Size(1920, 1080);
                     _driver.Manage().Window.Maximize();
                 }
-                else
+                else if(browser.Equals("firefox"))
                 {
                     _driver = new RemoteWebDriver(new Uri($"{hubIpAddress}"), option.ToCapabilities(), TimeSpan.FromSeconds(int.Parse(remoteWebDriverWaitTime)));
                     _driver.Manage().Window.Size = new Size(1920, 1080);
