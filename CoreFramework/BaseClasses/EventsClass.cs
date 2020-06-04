@@ -12,13 +12,18 @@ namespace CoreFramework.BaseClasses
 
             try
             {
-                
+                element.Clear();
                 element.SendKeys(text);
             }
             catch (Exception)
             {
                 ScrollToView(element);
-                element.SendKeys(text);
+                element.Clear();
+                foreach (var item in text)
+                {
+                    element.SendKeys(item.ToString());
+                }
+                
             }
             finally
             {

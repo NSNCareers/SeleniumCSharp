@@ -7,7 +7,7 @@ namespace PageObjectFramework.Pages
     public class HomePage : BaseClass, IHomePage
     {
         private static string pageName = "HomePage";
-        private static By locator = By.CssSelector("nav[class*='expand']>div>a[class*='brand']");
+        private static By locator = By.CssSelector("main>div>h1[class='display-4']");
 
         public HomePage() : base(pageName, locator)
         {
@@ -22,7 +22,7 @@ namespace PageObjectFramework.Pages
         }
        
 
-        public T ClickOnRegisterLink<T>() where T:class
+        public T ClickOnRegisterLink<T>() where T: class
         {
             var locator = By.CssSelector("a[href*='Register']");
             ClickOnElement(locator);
@@ -41,6 +41,27 @@ namespace PageObjectFramework.Pages
             var locator = By.CssSelector(selector);
             var boolResults = IsElementDisplayed(locator);
             return boolResults;
+        }
+
+        public T ClickOnLoginAppLink<T>() where T : class
+        {
+            var locator = By.CssSelector("a[class*='navbar-brand']");
+            ClickOnElement(locator);
+            return GetPage<T>();
+        }
+
+        public T ClickOnHomeLink<T>() where T : class
+        {
+            var locator = By.CssSelector("ul>li>a[href='/']");
+            ClickOnElement(locator);
+            return GetPage<T>();
+        }
+
+        public T ClickOnPrivacyLink<T>() where T : class
+        {
+            var locator = By.CssSelector("li>a[href='/Privacy']");
+            ClickOnElement(locator);
+            return GetPage<T>();
         }
     }
 }

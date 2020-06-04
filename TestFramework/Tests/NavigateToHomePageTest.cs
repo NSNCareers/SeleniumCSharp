@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using PageObjectFramework.Interfaces;
 using PageObjectFramework.IOC;
-using PageObjectFramework.Pages.Interfaces;
 using PageObjectFramework.StartUpConfig;
 
 namespace TestFramework.Tests
@@ -11,8 +10,6 @@ namespace TestFramework.Tests
     public class NavigateToHomePageTest : StartUpClass
     {
         private IHomePage _homePage;
-        private IRegisterPage _searchPage;
-        private ILoginPage _loginPage;
 
         [OneTimeSetUp]
         public void SetUp()
@@ -28,7 +25,7 @@ namespace TestFramework.Tests
 
 
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Home Page")]
         public void AssertPageTitel()
         {
             var titel = _homePage.GetPageTitel();
@@ -36,7 +33,7 @@ namespace TestFramework.Tests
             Assert.AreEqual(titel,pageTitel);
         }
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Home Page")]
         public void AssertRegisterButtonDisplayed()
         {
             var locator = "a[href*='Register']";
@@ -44,12 +41,20 @@ namespace TestFramework.Tests
             Assert.IsTrue(boolResults,$"Register button is not displayed");
         }
 
-        [Test, Category("Navigate to Login Page")]
+        [Test, Category("Navigate to Home Page")]
         public void AssertLoginButtonDisplayed()
         {
             var locator = "a[href*='Login']";
             var boolResults = _homePage.VerifyElementDisplayed(locator);
             Assert.IsTrue(boolResults, $"Login button is not displayed");
+        }
+
+        [Test, Category("Navigate to Home Page")]
+        public void AssertWelcomeTextDisplayed()
+        {
+            var locator = "h1[class='display-4']";
+            var boolResults = _homePage.VerifyElementDisplayed(locator);
+            Assert.IsTrue(boolResults, $"Welcome message is not displayed");
         }
     }
 }

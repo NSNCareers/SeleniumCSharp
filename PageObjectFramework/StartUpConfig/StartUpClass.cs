@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using PageObjectFramework.Interfaces;
 using PageObjectFramework.IOC;
+using PageObjectFramework.Pages.Interfaces;
 
 namespace PageObjectFramework.StartUpConfig
 {
@@ -31,6 +32,10 @@ namespace PageObjectFramework.StartUpConfig
 
         public readonly IHomePage homePage;
         public readonly IRegisterPage searchPage;
+        public readonly ILoginPage loginPage;
+        public readonly ILogoutPage logoutPage;
+        public readonly IRegisterConfirmationPage registerConfirmationPage;
+        public readonly IUserAccountPage userAccountPage;
 
         #endregion
     }

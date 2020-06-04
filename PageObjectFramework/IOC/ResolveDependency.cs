@@ -1,8 +1,6 @@
-﻿using System;
-using System.Configuration;
-using PageObjectFramework.Interfaces;
+﻿using PageObjectFramework.Interfaces;
 using PageObjectFramework.Pages;
-using Unity;
+using PageObjectFramework.Pages.Interfaces;
 
 namespace PageObjectFramework.IOC
 {
@@ -13,6 +11,10 @@ namespace PageObjectFramework.IOC
 
             UnityWrapper.Register<IHomePage, HomePage>();
             UnityWrapper.Register<IRegisterPage, RegisterPage>();
+            UnityWrapper.Register<ILoginPage, LoginPage>();
+            UnityWrapper.Register<ILogoutPage, LogoutPage>();
+            UnityWrapper.Register<IRegisterConfirmationPage, RegisterConfirmationPage>();
+            UnityWrapper.Register<IUserAccountPage, UserAccountPage>();
         }
     }
 }

@@ -67,6 +67,8 @@ namespace CoreFramework.BrowserConfig
 
                     case "localhost":
                         _driver = new FirefoxDriver();
+                        _driver.Manage().Window.Size = new Size(1920, 1080);
+                        _driver.Manage().Window.Maximize();
                         break;
                 }
 
