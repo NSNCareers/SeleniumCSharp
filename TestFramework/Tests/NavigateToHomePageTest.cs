@@ -17,13 +17,6 @@ namespace TestFramework.Tests
             _homePage = UnityWrapper.Resolve<IHomePage>();
         }
 
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-
-        }
-
-
 
         [Test, Category("Navigate to Home Page")]
         public void AssertPageTitel()

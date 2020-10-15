@@ -7,6 +7,7 @@ namespace CoreFramework.Enumerations
         {
             chrome,
             firefox,
+            ie,
             localhost
         }
     }

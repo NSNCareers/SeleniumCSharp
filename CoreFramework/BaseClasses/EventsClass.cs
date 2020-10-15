@@ -12,12 +12,14 @@ namespace CoreFramework.BaseClasses
 
             try
             {
+                HighlightElement(element);
                 element.Clear();
                 element.SendKeys(text);
             }
             catch (Exception)
             {
                 ScrollToView(element);
+                HighlightElement(element);
                 element.Clear();
                 foreach (var item in text)
                 {
@@ -36,11 +38,13 @@ namespace CoreFramework.BaseClasses
             var element = driver.FindElement(by);
             try
             {
+                HighlightElement(element);
                 element.Click();
             }
             catch (Exception)
             {
                 ScrollToView(element);
+                HighlightElement(element);
                 element.Click();
             }
             finally
@@ -57,11 +61,13 @@ namespace CoreFramework.BaseClasses
 
             try
             {
+                HighlightElement(element);
                 JavaScriptClick(element);
             }
             catch (Exception)
             {
                 ScrollToView(element);
+                HighlightElement(element);
                 JavaScriptClick(element);
             }
             finally
@@ -76,6 +82,7 @@ namespace CoreFramework.BaseClasses
         {
             try
             {
+                HighlightElement(element);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
                 executor.ExecuteScript("arguments[0].click();", element);
             }
@@ -89,6 +96,7 @@ namespace CoreFramework.BaseClasses
         {
             try
             {
+                HighlightElement(element);
                 IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
                 executor.ExecuteScript("arguments[0].scrollIntoView(true);", element);
             }
@@ -96,6 +104,13 @@ namespace CoreFramework.BaseClasses
             {
                 // Report
             }
+        }
+
+        private void HighlightElement(IWebElement element)
+        {
+            var jsDriver = (IJavaScriptExecutor)driver;
+            string highlightJavascript = @"$(arguments[0]).css({ ""border-width"" : ""2px"", ""border-style"" : ""solid"", ""border-color"" : ""red"", ""background"" : ""yellow"" });";
+            jsDriver.ExecuteScript(highlightJavascript, new object[] { element });
         }
     }
 }

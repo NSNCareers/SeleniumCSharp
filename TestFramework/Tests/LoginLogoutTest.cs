@@ -5,7 +5,6 @@ using PageObjectFramework.IOC;
 using PageObjectFramework.Pages;
 using PageObjectFramework.Pages.Interfaces;
 using PageObjectFramework.StartUpConfig;
-using System;
 
 namespace TestFramework.Tests
 {
@@ -51,6 +50,7 @@ namespace TestFramework.Tests
         [Test, Category("Login logout User")]
         public void ClickOnUserEmail()
         {
+            
            _userAccountPage.ClickOnUserEmail();
         }
 

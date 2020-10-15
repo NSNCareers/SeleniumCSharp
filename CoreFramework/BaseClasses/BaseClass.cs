@@ -34,16 +34,10 @@ namespace CoreFramework.BaseClasses
             get { return BrowserSession.driver; }
         }
 
-        //public T GetPage<T>()
-        //{
-
-        //    return (T)Activator.CreateInstance(typeof(T), new object[] { });
-        //}
-
-        public T GetPage<T>() 
+        public T GetPage<T>()
         {
 
-            return (T)Activator.CreateInstance(typeof(T));
+            return (T)Activator.CreateInstance(typeof(T), new object[] { });
         }
     }
 }

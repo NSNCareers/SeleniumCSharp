@@ -46,7 +46,7 @@ namespace CoreFramework.BrowserConfig
 
                     case "chrome":
                         chromeOptions = new ChromeOptions();
-                        chromeOptions.PlatformName = "LINUX";
+                        //chromeOptions.PlatformName = "LINUX";
                         chromeOptions.AddArgument("no-sandbox");
                         chromeOptions.AddArgument("--window-size=1920,1080");
                         chromeOptions.AddArgument("--start-maximized");

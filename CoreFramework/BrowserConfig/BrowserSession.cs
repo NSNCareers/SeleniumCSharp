@@ -12,7 +12,7 @@ namespace CoreFramework.BrowserConfig
 
         private static readonly object _lock = new object();
 
-        private static string browserType = Browser.localhost.ToString();
+        private static string browserType = Browser.firefox.ToString();
 
         static BrowserSession()
         {
@@ -51,7 +51,7 @@ namespace CoreFramework.BrowserConfig
         {
             if (_threadDriver.Value != null)
             {
-                _threadDriver.Value.Dispose();
+                //_threadDriver.Value.Dispose();
                 _threadDriver.Value.Quit();
             }
         }

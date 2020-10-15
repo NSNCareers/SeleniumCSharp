@@ -1,10 +1,10 @@
 ﻿{
-  "BaseUrl": "http://loginapp.nsncareers.com",
+  "BaseUrl": "http://prod.loginapp.nsncareers.com",
   "ApplicationName": "",
   "Version": "",
   "Environment": "",
   "PageLoad": "100",
   "ElementWaitTime": "10",
   "RemoteWebdriverWait": "90",
-  "HubIpAddress": "http://134.209.23.238:4444/wd/hub"
+  "HubIpAddress": "http://167.172.59.97:4444/wd/hub"
 }
