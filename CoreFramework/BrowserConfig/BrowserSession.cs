@@ -1,6 +1,7 @@
 ﻿using CoreFramework.Config;
 using OpenQA.Selenium;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using static CoreFramework.Enumerations.Enums;
 
@@ -12,7 +13,7 @@ namespace CoreFramework.BrowserConfig
 
         private static readonly object _lock = new object();
 
-        private static string browserType = Browser.firefox.ToString();
+        private static string browserType = Browser.chrome.ToString();
 
         static BrowserSession()
         {
@@ -46,12 +47,27 @@ namespace CoreFramework.BrowserConfig
                 throw e;
             }
         }
-       
-        public static void CloseBrowser()
+
+        public static void KillBrowser()
         {
+            Process[] AllProcesses = Process.GetProcesses();
+            foreach (var process in AllProcesses)
+            {
+                if (process.MainWindowTitle != "")
+                {
+                    string s = process.ProcessName.ToLower();
+                    if (s == "iexplore" || s == "iexplorer" || s == "" || s == "firefox")
+                        process.Kill();
+                }
+            }
+        }
+       
+        public static void QuitBrowser()
+        {
+
             if (_threadDriver.Value != null)
             {
-                //_threadDriver.Value.Dispose();
+                _threadDriver.Value.Close();
                 _threadDriver.Value.Quit();
             }
         }

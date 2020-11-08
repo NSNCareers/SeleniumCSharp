@@ -23,7 +23,7 @@ namespace PageObjectFramework.StartUpConfig
 
 
         [OneTimeTearDown]
-        public void TearDown()
+        public void Teardown()
         {
             Session.CloseBrowser();
         }

@@ -25,7 +25,7 @@ namespace TestFramework.Tests
             _loginPage = _homePage.ClickOnLoginLink<LoginPage>();
 
             var email = "snscareers@yahoo.com";
-            var password = "Password01!";
+            var password = "Password01#";
             _loginPage.EnterEmail(email);
             _loginPage.EnterPassword(password);
             _loginPage.CheckRememberMeRadioButton();

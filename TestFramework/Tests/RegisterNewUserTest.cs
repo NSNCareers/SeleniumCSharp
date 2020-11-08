@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using CoreFramework.BrowserConfig;
+using NUnit.Framework;
 using PageObjectFramework.Interfaces;
 using PageObjectFramework.IOC;
 using PageObjectFramework.Pages;
@@ -28,18 +29,12 @@ namespace TestFramework.Tests
             _registerPage = _homePage.ClickOnRegisterLink<RegisterPage>();
             
             var email = $"snscareer{value}@yahoo.com";
-            var password = "Password01!";
+            var password = "Password01#";
             _registerPage.EnterEmail(email);
             _registerPage.EnterPassword(password);
             _registerPage.EnterConfirmPassword(password);
             _registerConfirmationPage = _registerPage.ClickOnSubmitButton<RegisterConfirmationPage>();
             
-        }
-
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-
         }
 
 
