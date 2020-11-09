@@ -37,8 +37,6 @@ namespace TestFramework.Tests
             
         }
 
-
-
         [Test, Category("Register a new User")]
         public void AssertPageTitel()
         {
@@ -78,6 +76,8 @@ namespace TestFramework.Tests
             var titel = _homePage.GetPageTitel();
             var pageTitel = "Home page - LoginApp";
             Assert.AreEqual(titel, pageTitel);
+
+            _homePage.Shutown();
         }
     }
 }

@@ -57,6 +57,18 @@ namespace CoreFramework.BaseClasses
             }
         }
 
+         public void ClosePage()
+        {
+            try
+            {
+                driver.Quit();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         public bool DoesElementContainText(By by,string text)
         {
             try

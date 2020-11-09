@@ -63,5 +63,10 @@ namespace PageObjectFramework.Pages
             ClickOnElement(locator);
             return GetPage<T>();
         }
+
+         public void Shutown()
+        {
+            ClosePage();
+        }
     }
 }

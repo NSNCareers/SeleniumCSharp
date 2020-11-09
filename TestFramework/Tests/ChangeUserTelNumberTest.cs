@@ -65,6 +65,8 @@ namespace TestFramework.Tests
             var text = "×\r\nYour profile has been updated";
             var boolResults = _userAccountPage.VerifyProfileText(text);
             Assert.IsTrue(boolResults, "Element does not contain text");
+
+            _userAccountPage.Shutown();
         }
 
         [Test, Category("Login logout User")]

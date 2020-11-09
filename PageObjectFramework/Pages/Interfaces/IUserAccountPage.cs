@@ -7,6 +7,7 @@
         T ClickOnLogoutButton<T>() where T : class;
         T ClickOnLoginLink<T>() where T : class;
         void ClickOnUserEmail();
+        void Shutown();
         void EnterTelephoneNumber(string number);
         void ClickOnSaveButton();
         void EnterNewEmail(string newEmail);

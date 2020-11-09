@@ -5,6 +5,7 @@
         T ClickOnRegisterLink<T>() where T : class;
         T ClickOnLoginLink<T>() where T : class;
         string GetPageTitel();
+        void Shutown();
         bool VerifyElementDisplayed(string selector);
         T ClickOnLoginAppLink<T>() where T : class;
         T ClickOnPrivacyLink<T>() where T : class;

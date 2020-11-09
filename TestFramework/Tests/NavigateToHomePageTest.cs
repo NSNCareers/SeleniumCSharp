@@ -48,6 +48,8 @@ namespace TestFramework.Tests
             var locator = "h1[class='display-4']";
             var boolResults = _homePage.VerifyElementDisplayed(locator);
             Assert.IsTrue(boolResults, $"Welcome message is not displayed");
+
+            _homePage.Shutown();
         }
     }
 }

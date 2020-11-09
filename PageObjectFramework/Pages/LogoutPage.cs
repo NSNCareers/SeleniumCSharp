@@ -41,5 +41,10 @@ namespace PageObjectFramework.Pages
             var boolResults = DoesElementContainText(locator, emailText);
             return boolResults;
         }
+
+        public void Shutown()
+        {
+            ClosePage();
+        }
     }
 }

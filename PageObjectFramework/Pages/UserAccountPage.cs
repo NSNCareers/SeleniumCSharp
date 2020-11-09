@@ -91,5 +91,10 @@ namespace PageObjectFramework.Pages
             var boolResults = DoesElementContainText(locator, profileText);
             return boolResults;
         }
+
+        public void Shutown()
+        {
+            ClosePage();
+        }
     }
 }

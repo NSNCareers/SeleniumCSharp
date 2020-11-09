@@ -13,7 +13,7 @@ namespace CoreFramework.BrowserConfig
 
         private static readonly object _lock = new object();
 
-        private static string browserType = Browser.chrome.ToString();
+        private static string browserType = Browser.localhost.ToString();
 
         static BrowserSession()
         {
@@ -78,8 +78,11 @@ namespace CoreFramework.BrowserConfig
                 if (process.MainWindowTitle != "")
                 {
                     string s = process.ProcessName.ToLower();
-                    if (s == "iexplore" || s == "iexplorer" || s == "" || s == "firefox")
+                    if (s == "iexplore" || s == "iexplorer" || s == "chrome" || s == "firefox")
+                        //process.Container.Dispose();
                         process.Kill();
+                        process.Close();
+                        process.Dispose();
                 }
             }
         }
@@ -89,8 +92,9 @@ namespace CoreFramework.BrowserConfig
 
             if (_threadDriver.Value != null)
             {
-                _threadDriver.Value.Close();
-                _threadDriver.Value.Quit();
+                //_threadDriver.Value.Close();
+                //_threadDriver.Value.Quit();
+                _threadDriver.Dispose();
             }
         }
     }
