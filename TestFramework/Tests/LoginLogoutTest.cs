@@ -32,12 +32,6 @@ namespace TestFramework.Tests
             _userAccountPage = _loginPage.ClickOnlogInButton<UserAccountPage>();
         }
 
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-        }
-
-
 
         [Test, Category("Login logout User")]
         public void AssertPageTitel()

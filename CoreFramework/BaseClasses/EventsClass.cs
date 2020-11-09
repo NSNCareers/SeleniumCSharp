@@ -89,6 +89,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
         }
 
@@ -103,6 +104,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
         }
 

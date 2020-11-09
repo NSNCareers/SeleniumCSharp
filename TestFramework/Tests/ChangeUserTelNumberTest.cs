@@ -40,12 +40,6 @@ namespace TestFramework.Tests
             _userAccountPage = _loginPage.ClickOnlogInButton<UserAccountPage>();
         }
 
-        [OneTimeTearDown]
-        public void Teardown()
-        {
-            Session.CloseBrowser();
-        }
-
 
 
         [Test, Category("Login logout User")]

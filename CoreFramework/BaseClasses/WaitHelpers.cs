@@ -19,6 +19,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
 
             return boolResults;
@@ -36,6 +37,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
 
             return boolResults;
@@ -53,6 +55,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                // Report
+               Console.Write(e.Message);
             }
 
             return boolResults;
@@ -70,6 +73,7 @@ namespace CoreFramework.BaseClasses
             catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
 
             return boolResults;
@@ -84,9 +88,10 @@ namespace CoreFramework.BaseClasses
             {
                 wait.Until(wd => js.ExecuteScript("return document.readyState").ToString() == "complete");
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 // Report
+                Console.Write(e.Message);
             }
 
             return boolResults;
