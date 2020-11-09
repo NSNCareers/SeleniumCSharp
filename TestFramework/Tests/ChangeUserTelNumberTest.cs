@@ -88,6 +88,8 @@ namespace TestFramework.Tests
             var titel = _logoutPage.GetPageTitel();
             var pageTitel = "Log out - LoginApp";
             Assert.AreEqual(titel, pageTitel);
+
+            _logoutPage.Shutown();
         }
 
     }
