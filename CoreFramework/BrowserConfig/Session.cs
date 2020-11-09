@@ -16,6 +16,7 @@ namespace CoreFramework.BrowserConfig
         {
             BrowserSession.QuitBrowser();
             BrowserSession.KillBrowser();
+            BrowserSession.KillBrowser2();
         }
 
         public static IWebDriver Driver

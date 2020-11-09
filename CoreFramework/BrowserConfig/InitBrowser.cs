@@ -52,8 +52,6 @@ namespace CoreFramework.BrowserConfig
 
                     case "firefox":
                         option = new FirefoxOptions();
-                        //option.AddAdditionalCapability("--window-size=1920,1080", true);
-                        //option.AddAdditionalCapability("--start-maximized", true);
                         //option.PlatformName = "LINUX";
                         break;
 

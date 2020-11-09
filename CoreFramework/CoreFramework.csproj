@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Config\" />
     <Folder Include="BaseClasses\" />
-    <Folder Include="BrowserConfig\" />
     <Folder Include="Enumerations\" />
   </ItemGroup>
   <ItemGroup>
